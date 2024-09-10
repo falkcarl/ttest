@@ -118,16 +118,33 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<!-- At terminal need to do quarto add quarto-ext/shinylive -->
-<!-- might need to render twice or so, needs to download stuff-->
-<!--https://quarto.thecoatlessprofessor.com/r-shinylive-demo/-->
-<!--https://github.com/coatless-quarto/r-shinylive-demo-->
-<!-- to publish is a bit tricky, try quarto-pub?-->
-<!-- quarto publish quarto-pub (file size too big) -->
-<!-- for testing before deployment -->
-<!--https://github.com/RamiKrispin/shinylive-r-->
+<!-- The following resources consulted to get this all working:
+
+At terminal: quarto add quarto-ext/shinylive
+
+Might need to render twice or so, needs to download stuff
+
+https://quarto.thecoatlessprofessor.com/r-shinylive-demo/
+
+https://github.com/coatless-quarto/r-shinylive-demo
+
+To publish is a bit tricky,
+quarto publish quarto-pub (file size too big)
+
+Ultimately went with github pages, but not using quarto publish gh-pages
+1. Create github repo
+2. Make the app the main index file (index.qmd), at least for a first try
+3. Edit _quarto.yml file to render to docs folder
+https://quarto.org/docs/publishing/github-pages.html
+4. Push to github
+5. Edit repo on github
+https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+
+For testing before deployment:
+
+https://github.com/RamiKrispin/shinylive-r-->
 <pre class="shinylive-r" data-engine="r"><code>#| standalone: true
-#| viewerHeight: 1000
+#| viewerHeight: 1200
 
 ######################################################################
 ## Copyright 2024 Carl F. Falk
