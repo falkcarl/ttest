@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Carl F. Falk">
-<meta name="dcterms.date" content="2024-09-09">
+<meta name="dcterms.date" content="2024-09-10">
 
 <title>t-test example - t-test practice and simulator</title>
 <style>
@@ -106,7 +106,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 9, 2024</p>
+      <p class="date">September 10, 2024</p>
     </div>
   </div>
   
@@ -261,14 +261,16 @@ server &lt;- function(input, output, session) {
     group1diff &lt;- ifelse(D &gt; 0, "higher", "lower")
     group1 &lt;- paste0("Group 1 (M = ", round(data$M1,2), ", SD = ", round(data$SD1,2), ")" )
     group2 &lt;- paste0("Group 2 (M = ", round(data$M2,2), ", SD = ", round(data$SD2,2), ")" )
-    stats &lt;- paste0("t(",df, ") = ", round(test$statistic, 2), ", p &lt; ", alpha,
-                    ", ", (1-alpha)*100, "% CI[",round(test$conf.int[1],2),",",round(test$conf.int[2],2),"]")
-    
+
     if(reject){
+      stats &lt;- paste0("t(",df, ") = ", round(test$statistic, 2), ", p &lt; ", alpha,
+                      ", ", (1-alpha)*100, "% CI[",round(test$conf.int[1],2),",",round(test$conf.int[2],2),"]")      
       out &lt;- paste0(out, group1, " had significantly ", group1diff, " scores in
 comparison to ", group2, ", ", stats, ",
 with a ", dsize, " effect size, Cohen's d = ", round(cohend,2), ".")
     } else {
+      stats &lt;- paste0("t(",df, ") = ", round(test$statistic, 2), ", p &gt; ", alpha,
+                      ", ", (1-alpha)*100, "% CI[",round(test$conf.int[1],2),",",round(test$conf.int[2],2),"]")            
       out &lt;- paste0(out, "Although ", group1, " tended to have ", group1diff, " scores
 in comparison to ", group2, ", this difference was
 not significant, ", stats, ",
