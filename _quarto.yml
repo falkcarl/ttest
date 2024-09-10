@@ -1,0 +1,18 @@
+project:
+  type: website
+  output-dir: docs
+  resources:
+  - shinylive-sw.js
+  
+website:  
+  repo-url: https://github.com/falkcarl/ttest
+  repo-actions: [edit, issue]
+  title: "t-test example"
+
+format:
+  html:
+    grid: 
+      body-width: 1400px
+      sidebar-width: 200px
+      margin-width: 200px
+
