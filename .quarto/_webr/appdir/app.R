@@ -14,8 +14,8 @@
 
 library(shiny)
 library(xtable)
-#library(knitr)
-#library(kableExtra)
+library(knitr)
+library(kableExtra)
 library(effectsize)
 #library(report) # auto-generates APA-style report...
 #library(shinyjs) # not used
@@ -57,25 +57,25 @@ server <- function(input, output, session) {
   output$desc <- function(){
     d <- dat()
 
-    #kableExtra::kable_styling(
-    #knitr::kable(data.frame(Group = d$Gnames,
-    #                 N = c(d$N1,d$N2),
-    #                 M = c(d$M1,d$M2),
-    #                 #Median = c(d$Med1, d$Med2),
-    #                 SD = c(d$SD1,d$SD2),
-    #                 Var = c(d$Var1, d$Var2)),
-    #      "html",
-    #      digits = 3),
-    #"striped", full_width=T)
-    print(xtable(data.frame(Group = d$Gnames,
+    kableExtra::kable_styling(
+    knitr::kable(data.frame(Group = d$Gnames,
                      N = c(d$N1,d$N2),
                      M = c(d$M1,d$M2),
                      #Median = c(d$Med1, d$Med2),
                      SD = c(d$SD1,d$SD2),
                      Var = c(d$Var1, d$Var2)),
-           digits = 3),type="html",
-          include.rownames=FALSE,
-          booktabs=TRUE)
+          "html",
+          digits = 3),
+    "striped", full_width=T)
+    #print(xtable(data.frame(Group = d$Gnames,
+    #                 N = c(d$N1,d$N2),
+    #                 M = c(d$M1,d$M2),
+                     #Median = c(d$Med1, d$Med2),
+    #                 SD = c(d$SD1,d$SD2),
+    #                 Var = c(d$Var1, d$Var2)),
+    #       digits = 3),type="html",
+    #      include.rownames=FALSE,
+    #      booktabs=TRUE)
     
   }
   
