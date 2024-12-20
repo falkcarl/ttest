@@ -67,7 +67,7 @@ library(kableExtra)
 library(effectsize)
 #library(report) # auto-generates APA-style report...
 #library(shinyjs) # not used
-#library(ggplot2) # not used
+library(ggplot2)
 
 # Define server logic
 server <- function(input, output, session) {
@@ -126,6 +126,12 @@ server <- function(input, output, session) {
     #      booktabs=TRUE)
     
   }
+  
+  # plots
+  output$plots <- renderPlot({
+    data <- dat()    
+    ggplot(data$data, aes(x=X, y=Y)) + geom_boxplot()
+  })
   
     # display results of t-test
   output$results <- renderPrint({
@@ -240,9 +246,10 @@ ui <- fluidPage(
             ),
             tabPanel("Results",
                      verbatimTextOutput("results")                     
-            )#,
-            #tabPanel("Visualization"
-            #)
+            ),
+            tabPanel("Visualization",
+                     plotOutput("plots")    
+            )
           )
       )
     ) # end sidebarLayout
